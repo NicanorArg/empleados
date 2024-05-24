@@ -14,7 +14,7 @@ def cargar_empleados_random(lista: list, cantidad: int):
         legajo = next_legajo
         next_legajo += 1
 
-        genero = choice("f", "m")
+        genero = choice(["f", "m"])
 
         match genero:
             case "f":
@@ -58,3 +58,16 @@ def new_empleado(legajo: int, genero: str,nombre: str, apellido: str, edad: int,
     empleado["sueldo"] = sueldo
 
     return empleado
+
+
+def mostrar_empleados(empleados: list) -> None:
+    print("                                          *********Lista de empleados**********")
+    print(f"{"Legajo"} {"Genero"} {"Nombre":>10} {"Apellido":>10}  {"Edad"}       {"Calle":13} {"Localidad":10}  {"Provincia"} {"email":>22} {"Sector":>25} {"Sueldo":>15}")
+    print("---------------------------------------------------------------------------------------------------------------------------------------------------------")
+
+    for empleado in empleados:
+        print(f"{empleado["legajo"]:<8} {empleado["genero"]:4} {empleado["nombre"]:>10} {empleado["apellido"]:>10} {empleado["edad"]:>4}   {empleado["calle"]:>}   {empleado["localidad"]:<11} {empleado["provincia"]:<15} {empleado["email"]:35} {empleado["sector"]:<15} {empleado["sueldo"]}")
+
+empleados = []
+cargar_empleados_random(empleados, 5)
+mostrar_empleados(empleados)
